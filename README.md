@@ -118,6 +118,7 @@ client.print("<p class=\"data-info\">Manual Override: " + String(manualOverride 
 client.print("<p class=\"data-info\" id=\"temperature\">Temperature: " + String(temperature) + "°C</p>");
 client.print("<div class=\"buttons\"><a href=\"/relay/on\"><button><i class=\"icon\">🔌</i> Turn ON</button></a><a href=\"/relay/off\"><button><i class=\"icon\">❌</i> Turn OFF</button></a><a href=\"/relay/reset\"><button><i class=\"icon\">🔄</i> Reset to RTC Control</button></a></div></div></body></html>");
 
+```
 ---
 ## License 📜
 
