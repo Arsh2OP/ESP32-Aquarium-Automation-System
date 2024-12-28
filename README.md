@@ -115,3 +115,18 @@ client.print("<p class=\"data-info\">Relay State: " + String(relayState ? "ON" :
 client.print("<p class=\"data-info\">Manual Override: " + String(manualOverride ? "Enabled" : "Disabled") + "</p>");
 client.print("<p class=\"data-info\" id=\"temperature\">Temperature: " + String(temperature) + "°C</p>");
 client.print("<div class=\"buttons\"><a href=\"/relay/on\"><button><i class=\"icon\">🔌</i> Turn ON</button></a><a href=\"/relay/off\"><button><i class=\"icon\">❌</i> Turn OFF</button></a><a href=\"/relay/reset\"><button><i class=\"icon\">🔄</i> Reset to RTC Control</button></a></div></div></body></html>");
+
+## License 📜
+
+This project is licensed under the *MIT License*.
+
+---
+
+## Contact 📧
+
+For any questions or suggestions, feel free to contact us:
+
+- 📧 Email: shravindsingh007@gmail.com.com
+---
+
+*Developed with ❤ for Smart Aquarium Management.*
