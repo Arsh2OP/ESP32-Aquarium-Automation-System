@@ -89,8 +89,9 @@ void loop() {
   Serial.println(" °C");
 
   // --- Low Temperature LED Blinking Logic ---
+  unsigned long currentMillis = millis(); // Consolidated variable for timing
+
   if (temperature < 25.0) {
-    unsigned long currentMillis = millis();
     if (currentMillis - lastBlinkMillis >= blinkInterval) {
       lastBlinkMillis = currentMillis;
       digitalWrite(ledPin, !digitalRead(ledPin));  // Toggle LED
@@ -119,7 +120,6 @@ void loop() {
   }
 
   // --- Wi-Fi Reconnection Logic ---
-  unsigned long currentMillis = millis();
   if (currentMillis - previousMillis >= wifiCheckInterval) {
     previousMillis = currentMillis;
     if (WiFi.status() != WL_CONNECTED) {
@@ -165,6 +165,12 @@ void loop() {
       // Serve temperature update in response to /temp
       client.print("HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n");
       client.print(temperature);
+      client.print("\n");  // Add newline for time info
+      client.print(now.hour());
+      client.print(":");
+      client.print(now.minute());
+      client.print(":");
+      client.print(now.second());
       delay(1);
       client.stop();
     } else {
@@ -188,7 +194,7 @@ void loop() {
       client.print("</style>");
       client.print("</head><body>");
       client.print("<h1>ESP32 Relay Control</h1>");
-      client.print("<p>Time: " + String(now.hour()) + ":" + String(now.minute()) + ":" + String(now.second()) + "</p>");
+      client.print("<p>Time: <span id='time'>--:--:--</span></p>");
       client.print("<p>Date: " + String(now.year()) + "-" + String(now.month()) + "-" + String(now.day()) + "</p>");
       client.print("<p class='temperature'>Temperature: <span id='temp'>" + String(temperature) + "°C</span></p>");
       client.print("<p class='status " + String(relayState ? "on" : "off") + "'>Relay State: " + String(relayState ? "ON" : "OFF") + "</p>");
@@ -201,8 +207,11 @@ void loop() {
       client.print("<script>");
       client.print("setInterval(function(){");
       client.print("fetch('/temp').then(response => response.text()).then(data => {");
+      client.print("var tempData = data.split('\\n');");
       client.print("var tempElement = document.getElementById('temp');");
-      client.print("tempElement.textContent = data + '°C';");
+      client.print("var timeElement = document.getElementById('time');");
+      client.print("tempElement.textContent = tempData[0] + '°C';");
+      client.print("timeElement.textContent = tempData[1];");
       client.print("});");
       client.print("}, 1000);");
       client.print("</script>");
