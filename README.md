@@ -100,6 +100,8 @@ The web interface provides the following functionalities:
 Here is a snippet of the code for the web interface and temperature reading:
 
 ```cpp
+
+---
 client.print("<html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>ESP32 Relay Control</title><style>");
 client.print("/* General Styles */ * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: 'Arial', sans-serif; background: linear-gradient(135deg, #6e7e88, #4d8b9d); color: #fff; text-align: center; padding: 20px; } h1 { font-size: 3em; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); } .content { background-color: rgba(255, 255, 255, 0.2); border-radius: 15px; padding: 30px; margin-bottom: 20px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); } .data-info { font-size: 1.5em; margin: 20px 0; color: #f1f1f1; } .buttons { margin-top: 20px; } button { background-color: #4CAF50; color: white; font-size: 1.3em; padding: 12px 25px; border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; margin: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); } button:hover { background-color: #45a049; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); } button:active { transform: scale(0.95); } .icon { font-size: 2em; margin-right: 10px; } @media screen and (max-width: 600px) { h1 { font-size: 2.2em; } .content { padding: 20px; } .data-info { font-size: 1.2em; } button { padding: 12px 20px; font-size: 1.1em; } }</style>");
 client.print("<script>");
@@ -130,3 +132,4 @@ For any questions or suggestions, feel free to contact us:
 ---
 
 *Developed with ❤ for Smart Aquarium Management.*
+---
